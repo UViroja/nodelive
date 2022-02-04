@@ -28,6 +28,19 @@ router.post("/studinfo",async(req,res)=>{
         }
     })
 })
+router.delete("/studinfo/:id", async (request, response) => {
+    const _id = request.params.id;
+    const mydata = await Data.findByIdAndDelete(_id);
+    response.send(mydata);
+  });
+  router.patch("/studinfo/:id", async (request, response) => {
+    // update
+    const _id = request.params.id;
+    const mydata = await Data.findByIdAndUpdate(_id, request.body, {
+      new: true,
+    });
+    response.send(mydata);
+  });
 
 router.post("/studresult",async(req,res)=>{
     const  mydata = new Result({
