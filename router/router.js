@@ -5,6 +5,10 @@ const Data = require("../model/studinfo");
 const Result = require("../model/studresult")
 const bodyParser = require("body-parser");
 
+router.get("/studinfo", async (req, res) => {
+    const mydata = await Data.find();
+    res.send(mydata);
+  });
 router.post("/studinfo",async(req,res)=>{
     const  mydata = new Data({
         name:req.body.name,
